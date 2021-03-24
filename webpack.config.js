@@ -17,12 +17,14 @@ module.exports = {
         }
       },
        {
-        test: /\.(png|jpeg|gif|jpg)$/i,
+        test: /\.(png|jpeg|gif|jpg|json)$/i,
         loader: 'file-loader',
+        type: 'javascript/auto',
         options: {
-          name: '[name].[ext]',
-          outputPath:'images/'
-        }
+          name() {
+            return '[path][name].[ext]';
+          },
+        },
       },
        {
         test: /\.s[ac]ss$/i,
