@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --mode development",
-    "dev": "webpack serve --config webpack.config.js --open",
-    "build": "webpack --config webpack.config.js --mode production",
-    "ssr": "npm run build&&node ./src/server.js"
+    "dev": "webpack serve --open",
+    "build": "webpack --mode production",
+    "ssr": "npm run build && node ./src/server.js"
   },
   "author": "Vinay Kumar",
   "license": "ISC",
