@@ -1,10 +1,20 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {Carousel} from 'react-bootstrap';
 import {CarouselBg} from '../styled-components/CarouselBg';
-const carouselarray=[{"title":"BOOTSTRAP CAROUSEL & SLIDER","description":"Create responsive image sliders for your website in a few clicks, without coding! Bootstrap Slider is totally free for personal and commercial use.","image":"bg2.jpg"},{"title":"BOOTSTRAP CAROUSEL & SLIDER","description":"Create responsive image sliders for your website in a few clicks, without coding! Bootstrap Slider is totally free for personal and commercial use.","image":"bg6.jpg"},{"title":"BOOTSTRAP CAROUSEL & SLIDER","description":"Create responsive image sliders for your website in a few clicks, without coding! Bootstrap Slider is totally free for personal and commercial use.","image":"bg3.jpg"},{"title":"BOOTSTRAP CAROUSEL & SLIDER","description":"Create responsive image sliders for your website in a few clicks, without coding! Bootstrap Slider is totally free for personal and commercial use.","image":"bg4.jpg"},{"title":"BOOTSTRAP CAROUSEL & SLIDER","description":"Create responsive image sliders for your website in a few clicks, without coding! Bootstrap Slider is totally free for personal and commercial use.","image":"bg5.jpg"}]
 const CarouselDiv =()=>{
-	const [carouselData,setcarouselData]=useState([...carouselarray]);
+	const [carouselData,setcarouselData]=useState([]);
 	const [index, setIndex] = useState(0);
+        useEffect(()=>{
+        fetch(`./public/data/carousel_data.json`)
+        .then((resp)=>{
+         if(resp.status==200){
+          return resp.json(); 
+         }
+         return [];
+         }).then((resp_json)=>{
+          setcarouselData(resp_json);
+         })
+        },[]) 
 	const handleSelect = (selectedIndex, e) => {
     	setIndex(selectedIndex);
   	};
